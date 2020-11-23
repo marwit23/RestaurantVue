@@ -1,0 +1,57 @@
+Błędy z backendu
+Obsługa błdów w axios
+
+
+aktywne klasy w menu
+defaultowy widok
+Add Error Message on start
+Sprawdzić łączenie z Heroku i obsłużyć timeout
+Walidacja od razu, nie dopiero po submicie,
+Spróbować transitions
+Add footer
+About Page / Modal
+Stylowanie linków w panelu
+Delete dish warning
+Recipe in use cannot delete
+Ingredient in use cannot delete
+Delivery delivered cannot delete
+Int >= 0												
+To-do show which item quantity is insufficient
+Formatowanie kodu
+Dodać mushrooms do listy zakupów
+Linki w panelu nie tabsy
+Dodać timer w to-do-dish
+Input field size
+Sformatować kod w VSCode
+Recipes push czy unshift
+Push to github
+Poszukać toola do czyszczenia kodu
+Cooking orders as cards
+
+
+Obliczanie ilości znowu jest złe?							BACKEND 	
+Used quantity?												BACKEND 	póżniej
+Usunąć safe to eat w deliveryItemDTO						BACKEND 	DONE
+Add Id's 													BACKEND 	DONE
+Ingredients PUT nie działa									BACKEND 	DONE
+Reverse sort 												BACKEND 	DONE
+Zmienić status -> data										BACKEND 	nie, bo i tak trzeba to zrobić
+IngredientController put po kolei							BACKEND 	DONE
+Dodać expired items nieużywane, używane zmienić datę		BACKEND 	data zmieniona, expired olać
+Delivery delivered cannot delete 							BACKEND 	DONE
+Delete delivery z deliveryItem, a dish z to-do-dishes		BACKEND 	DONE
+Obliczanie ilości poprawić									BACKEND 	DONE
+Ingredient in use cannot delete 							BACKEND 	DONE
+Jednak dodać expired 										BACKEND
+Dodać created i finished date do to-do-dish 				BACKEND
+Dish zmienić na recipe? 									BACKEND
+Recipes reverse ? 											BACKEND
+Id generation strategy Entity 								BACKEND
+Sprawdzić jeszcze ten komentarz w Ingredient 				BACKEND
+Backend źle zwraca ingredient names ribeye steak 			BACKEND
+Cooking orders przerobić na zamówienia z listą dań 			BACKEND
+Chicken salad -> Chicken Salad 								BACKEND		
+
+
+
+
