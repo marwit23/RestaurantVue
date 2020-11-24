@@ -2,18 +2,18 @@
     <div>
         <UserNavigation />
         <b-container>
-            <router-view />
+                <router-view />
         </b-container>
     </div>
 </template>
 <script>
-import UserNavigation from './UserNavigation.vue'
-import { mapActions, mapGetters } from 'vuex'
+import UserNavigation from "./UserNavigation.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-    name: 'UserPanel',
+    name: "UserPanel",
     components: {
-        UserNavigation
+        UserNavigation,
     },
 
     methods: {
@@ -21,14 +21,25 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["getUser"])
+        ...mapGetters(["getUser"]),
     },
 
-    created(){
-        this.setUser(2)
-    }
-
+    created() {
+        this.setUser(2);
+    },
 };
 </script>
 <style>
+.fade-enter-active,
+.fade-leave-active {
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
+}
+
 </style>

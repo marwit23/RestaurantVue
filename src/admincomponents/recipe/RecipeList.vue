@@ -19,11 +19,6 @@
                         </b-button>
                         
                             <b-button variant="btn btn-light btn-sm ml-2" @click="editRecipe(recipe)">Edit
-                                <!-- <span @click="setTempRecipe(recipe)">Edit</span>
-                                <router-link to="/admin/edit-recipe" v-if="isAvailable"></router-link>
-                                <b-button v-else v-b-modal.modal-1>Delete
-                                    
-                                </b-button> -->
                             </b-button>
                         
                             <b-button v-b-modal.modal-1 @click="setTempRecipe(recipe)" class="btn btn-light btn-sm ml-2">Delete
@@ -92,7 +87,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["allRecipes", "tempRecipe", "allTodos", "tempRecipe"]),
+        ...mapGetters(["allRecipes", "tempRecipe", "allTodos"]),
 
         pageCount() {
             let l = this.allRecipes.length,

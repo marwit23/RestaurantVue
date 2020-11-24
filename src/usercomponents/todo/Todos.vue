@@ -62,12 +62,6 @@
                                 <b-col>
                                     <b-button
                                         v-if="todo.toDoStatus !== 'COMPLETED'"
-                                        variant="outline-secondary btn-sm"
-                                        :disabled="todo.toDoStatus == 'COMPLETED'"
-                                        >Edit
-                                    </b-button>
-                                    <b-button
-                                        v-if="todo.toDoStatus !== 'COMPLETED'"
                                         v-b-modal.modal-1
                                         @click="setTempTodo(todo)"
                                         variant="outline-secondary btn-sm ml-2"
@@ -97,7 +91,7 @@
             </b-col>
 
             <b-modal id="modal-1" okVariant="danger" okTitle="Delete" @ok="deleteTodo(tempTodo.toDoDishId)">
-                <h5 class="mb-4">Confirm delete order ID: {{ tempTodo.dishName }}</h5>
+                <h5 class="mb-4">Confirm delete order ID: {{ tempTodo.toDoDishId }}</h5>
                 <p class="my-4">
                     Are you sure you want to delete this item? This action cannot be undone.
                 </p>
@@ -108,9 +102,8 @@
     </div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
-import AddTodoModal from "./AddTodoModal.vue";
-// import TodoCardList from "./TodoCardList.vue";
+import { mapGetters, mapActions } from "vuex"
+import AddTodoModal from "./AddTodoModal.vue"
 
 export default {
     name: "Todos",
@@ -123,25 +116,11 @@ export default {
     },
     components: {
         AddTodoModal,
-        // TodoCardList,
     },
 
     computed: {
         ...mapGetters(["allTodos"]),
 
-        // todosOpened() {
-        //     var todosOpenedArray = this.allTodos.filter((todo) => todo.toDoStatus == "OPENED");
-        //     return todosOpenedArray;
-        // },
-
-        // todosWaiting() {
-        //     var todosWaitingArray = this.allTodos.filter((todo) => todo.toDoStatus == "WAITING");
-        //     return todosWaitingArray;
-        // },
-        // todosCompleted() {
-        //     var todosCompletedArray = this.allTodos.filter((todo) => todo.toDoStatus == "COMPLETED");
-        //     return todosCompletedArray;
-        // },
         todosCopy() {
             return JSON.parse(JSON.stringify(this.allTodos))
         },
@@ -157,21 +136,7 @@ export default {
         todosSorted() {
             var tempSorted = this.todosOpenedArray.concat(this.todosWaitingArray, this.todosCompletedArray)
             return tempSorted
-        }
-
-
-        //     for (var todo in todosSorted) {
-        //         if (todo.toDoStatus == "OPENED") {
-        //             tempSortedList.splice(openedLength, 0, todo);
-        //         } else if (todo.toDoStatus == "WAITING") {
-        //             tempSortedList.splice(waitingLength, 1, todo);
-        //         } else if (todo.toDoStatus == "COMPLETED") {
-        //             tempSortedList.splice(completedLength, 1, todo);
-        //         }
-        //     }
-        //     console.log(tempSortedList)
-        //     return tempSortedList;
-        // },
+        },
     },
 
     methods: {
@@ -183,8 +148,6 @@ export default {
         },
         setOpened(todo) {
             todo.toDoStatus = "OPENED"
-            this.todosSorted.splice(this.todosSorted.indexOf(todo), 1)
-            this.todosSorted.splice(this.todosOpenedArray.length, 0, todo)
             this.editTodo(todo)
         },
         setCompleted(todo) {
