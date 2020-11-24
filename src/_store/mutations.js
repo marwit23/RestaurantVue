@@ -55,14 +55,14 @@ export default {
     setTodos: (state, todos) => state.todos = todos,
     newTodo: (state, todo) => state.todos.push(todo),
     deleteTodo(state, id) {
-        const index = state.todos.findIndex(todo => todo.id == id)
+        const index = state.todos.findIndex(todo => todo.toDoDishId == id)
         state.todos.splice(index, 1)
     },
-    updateTodo: (state, id, todo) => {
-        const index = state.todos.findIndex(todo => todo.id === id);
-        if (index !== -1) {
+    updateTodo: (state, todo) => {
+        const index = state.todos.findIndex(theTodo => theTodo.toDoDishId === todo.toDoDishId);
             state.todos.splice(index, 1, todo);
-        }
-    },
+    }
 
 };
+
+

@@ -49,6 +49,7 @@ export default {
     },
     todoById: (state) => (id) => {
         return state.todos.find(todo => todo.toDoDishId === id)
-    }
+    },
 
 }
+

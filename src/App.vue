@@ -4,7 +4,7 @@
         <router-view />
           <div class="app-message text-center">
                 <div v-if="allIngredients.length < 1">
-                    <p>Data is loading...If this is your first time launching the app, it may take up to 30 seconds for the database to wake up.</p>
+                    <p>Data is loading...If this is your first time launching the app, it may take about 30 seconds for the database to wake up.</p>
                     <b-spinner label="Spinning"></b-spinner>
                 </div>
                 <div v-else-if="getUser === 0">

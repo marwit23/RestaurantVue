@@ -222,6 +222,9 @@ export default {
         })
         console.log(response.data)
         commit('newTodo', response.data);
+        if(response.status === 200) {
+               router.push({ path : '/user/todos' });
+        }
     },
 
     async deleteTodo({ commit }, id) {
@@ -239,7 +242,7 @@ export default {
     async editTodo({ commit }, todo) {
         await axios({
             method: 'put',
-            url: `${todoListUrl}/${todo.id}`,
+            url: `${todoListUrl}/${todo.toDoDishId}`,
             data: todo,
             auth: {
                 username: 'admin',

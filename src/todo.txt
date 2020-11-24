@@ -27,6 +27,8 @@ Recipes push czy unshift
 Push to github
 Poszukać toola do czyszczenia kodu
 Cooking orders as cards
+Dokończyć v-if
+Posortować przez 3 arraye i sloty
 
 
 Obliczanie ilości znowu jest złe?							BACKEND 	

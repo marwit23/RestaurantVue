@@ -115,10 +115,6 @@ export default {
             this.$v.$reset()
         },
 
-        // onCancel() {
-        //     this.$refs['add-ingredient-modal'].hide()
-        // }
-
     },
     created() {}
 }

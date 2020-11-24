@@ -171,12 +171,6 @@ export default {
         prevPage() {
             this.pageNumber--
         },
-        sortByAvailable(a, b) {
-            return b.availableQuantity - a.availableQuantity
-        },
-        sortByAvailableReverse(a, b) {
-            return b.availableQuantity - a.availableQuantity
-        },
         propComparator(prop) {
             return function(a, b) {
                 return a[prop] - b[prop];
