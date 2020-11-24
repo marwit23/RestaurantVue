@@ -52,7 +52,8 @@ Id generation strategy Entity 								BACKEND
 Sprawdzić jeszcze ten komentarz w Ingredient 				BACKEND
 Backend źle zwraca ingredient names ribeye steak 			BACKEND
 Cooking orders przerobić na zamówienia z listą dań 			BACKEND
-Chicken salad -> Chicken Salad 								BACKEND		
+Chicken salad -> Chicken Salad 								BACKEND	
+Chicken breast nie działa put	
 
 
 
