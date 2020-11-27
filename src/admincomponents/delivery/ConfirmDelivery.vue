@@ -20,11 +20,11 @@
                                 <b-input-group>
                                     <b-form-input type="text" 
                                         v-model="deliveryItem.deliveredQuantity" 
-                                        :value="deliveryItem.orderedQuantity" 
                                         :class="[{red: deliveryItem.deliveredQuantity == 0}]" 
                                         class="form-control" 
                                         placeholder="confirm quantity">
                                     </b-form-input>
+                                    <!-- >= 0 -->
                                     <template #prepend>
                                         <b-button 
                                         class="btn btn-light" 

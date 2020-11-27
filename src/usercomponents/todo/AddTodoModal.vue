@@ -14,6 +14,7 @@
         <b-row class="my-2">
           <b-col sm="6">
             <b-form-select v-model="formData.dishName" :options="dishOptions" class="mb-2 mr-sm-2"> </b-form-select>
+            <!-- required -->
           </b-col>
           <b-col>
             <b-form-input
@@ -23,6 +24,9 @@
               class="mb-2 mr-sm-2"
             >
             </b-form-input>
+            <!-- required -->
+            <!-- numeric -->
+            <!-- >= 0 -->
           </b-col>
         </b-row>
       </b-form>

@@ -10,11 +10,13 @@
                   <b-form-input
                   v-model="formData.dishName"
                   placeholder="Enter dish name"
-                  onfocus="this.placeholder = ''" 
+                  onfocus="this.placeholder = ''"
                   class="mb-2 mr-sm-2">
                   </b-form-input>
+                  <!-- required -->
                 </b-col>
               </b-row>
+
 
               <div v-for="ingredient in formData.ingredients" :key="ingredient.dishIngredientId">
 
@@ -26,15 +28,20 @@
                 :options="ingredientOptions"
                 class="mb-2 mr-sm-2">
               </b-form-select>
+              <!-- required -->
+              <!-- unique -->
               </b-col>
 
               <b-col>
               <b-form-input 
               v-model="ingredient.quantityGrams"
               placeholder="Quantity in grams"
-              onfocus="this.placeholder = ''" 
+              onfocus="this.placeholder = ''"
               class="mb-2 mr-sm-2">
               </b-form-input>
+              <!-- required -->
+              <!-- numeric -->
+              <!-- > 0 -->
               </b-col>
 
               <b-col>
@@ -58,8 +65,6 @@
               </div>
 
             </b-form>
-
-            <pre v-html="formData"/>
 
             <div class="mt-4">
                 <b-button variant="secondary" @click="onCancel">Cancel</b-button>

@@ -26,7 +26,7 @@ export default {
 
     methods: {
         onCancel() {
-            this.$refs["view-recipe-modal"].hide();
+            this.$refs["view-recipe-modal"].hide()
         },
     },
 

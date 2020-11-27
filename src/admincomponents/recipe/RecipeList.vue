@@ -47,16 +47,16 @@
                 </div>
 
                 <div v-else>
-                    <p class="my-4 red">Unable to delete this recipe. This recipe is in use!</p>
+                    <p class="my-4 font-weight-bold">Unable to delete. This recipe is in use!</p>
                     <p class="my4">All cooking orders that use this dish must be first removed from the list in User Panel.</p>
                     <div class="float-right">
-                    <b-button variant="secondary" class="ml-2" @click="onCancel">OK</b-button>
+                    <b-button variant="warning" class="ml-2" @click="onCancel">OK</b-button>
                     </div>
                 </div>               
         </b-modal>
 
         <b-modal id="modal-2" ok-only okTitle="OK" okVariant="success">
-            <p class="my-4 red">Unable to edit this recipe. This recipe is in use!</p>
+            <p class="my-4 red">Unable to edit. This recipe is in use!</p>
             <p class="my4">All cooking orders that use this dish must be first removed from the list in User Panel.</p>
         </b-modal>
 
@@ -110,11 +110,6 @@ export default {
             const tempArray = this.allTodos.map(toDo => toDo.dishName)
             const tempArray2 = tempArray.filter(dishName => dishName == tempRecipe.dishName)
             if (tempArray2.length > 0) this.isAvailable = false 
-
-            console.log(this.allTodos)
-            console.log(tempArray)
-            console.log(tempArray2)
-            console.log(this.isAvailable)
         },
         editRecipe(tempRecipe){
             console.log(tempRecipe)
