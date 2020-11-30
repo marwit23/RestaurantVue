@@ -155,7 +155,7 @@ export default {
     }
 };
 </script>
-<style>
+<style scoped>
 .dark-gray {
     color: darkgray
 }
@@ -163,4 +163,5 @@ export default {
 .smaller-font {
     font-size: 90%;
 }
+
 </style>

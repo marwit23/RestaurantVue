@@ -3,27 +3,43 @@
     <h5 class="mb-4 mt-4">New Purchase Order</h5>
 
     <ValidationObserver v-slot="{ invalid }">
-      <b-form @submit.prevent="handleSubmit(onSubmit)" class="border-bottom pb-2">
-        <div v-for="deliveryItem in formData.deliveryItems" :key="deliveryItem.deliveryItemId">
+      <b-form
+        @submit.prevent="handleSubmit(onSubmit)"
+        class="border-bottom pb-2"
+      >
+        <div
+          v-for="deliveryItem in formData.deliveryItems"
+          :key="deliveryItem.deliveryItemId"
+        >
           <b-row>
             <b-col>
-              <ValidationProvider name="Ingredient" rules="required" v-slot="{ errors }">
+              <ValidationProvider
+                name="Ingredient"
+                rules="required"
+                v-slot="{ errors }"
+              >
                 <b-form-select
                   v-model="deliveryItem.ingredientName"
-                  @blur="validateUnique"
+                  @blur.native="validateUnique"
                   :options="ingredientOptions"
                   class="mb-2 mr-sm-2"
                 >
                 </b-form-select>
                 <span class="text-danger text-small">{{ errors[0] }}</span>
-                <span v-show="!checkUnique(deliveryItem.ingredientName)" class="text-danger text-small"
+                <span
+                  v-show="!checkUnique(deliveryItem.ingredientName)"
+                  class="text-danger text-small"
                   >This item is duplicate</span
                 >
               </ValidationProvider>
             </b-col>
 
             <b-col>
-              <ValidationProvider name="Quantity" rules="required|integer|greaterThan100" v-slot="{ errors }">
+              <ValidationProvider
+                name="Quantity"
+                rules="required|integer|min_value:1"
+                v-slot="{ errors }"
+              >
                 <b-form-input
                   v-model="deliveryItem.orderedQuantity"
                   placeholder="Quantity in grams"
@@ -36,7 +52,11 @@
               </ValidationProvider>
             </b-col>
             <b-col>
-              <ValidationProvider name="Price" rules="required|double" v-slot="{ errors }">
+              <ValidationProvider
+                name="Price"
+                rules="required|double|min_value:0"
+                v-slot="{ errors }"
+              >
                 <b-form-input
                   v-model="deliveryItem.pricePerKg"
                   placeholder="Price per kg"
@@ -49,7 +69,10 @@
             </b-col>
             <b-col>
               <b-button
-                v-if="deliveryItem === formData.deliveryItems[formData.deliveryItems.length - 1]"
+                v-if="
+                  deliveryItem ===
+                    formData.deliveryItems[formData.deliveryItems.length - 1]
+                "
                 variant="primary"
                 class="ml-4 mb-2 mr-sm-2"
                 @click="addItem"
@@ -58,7 +81,8 @@
 
               <b-button
                 v-if="
-                  deliveryItem === formData.deliveryItems[formData.deliveryItems.length - 1] &&
+                  deliveryItem ===
+                    formData.deliveryItems[formData.deliveryItems.length - 1] &&
                     deliveryItem !== formData.deliveryItems[0]
                 "
                 variant="secondary"
@@ -72,7 +96,12 @@
       </b-form>
       <div class="mt-4">
         <b-button variant="secondary" @click="onCancel">Cancel</b-button>
-        <b-button type="submit" variant="warning" class="ml-2" :disabled="invalid || !isUnique" @click="onSubmit"
+        <b-button
+          type="submit"
+          variant="warning"
+          class="ml-2"
+          :disabled="invalid || !isUnique"
+          @click="onSubmit"
           >Submit</b-button
         >
       </div>
@@ -103,11 +132,14 @@ export default {
     ...mapGetters(["allDeliveries", "allIngredients"]),
 
     ingredientOptions() {
-      const tempArray1 = this.allIngredients.map((ingredient) => ingredient.ingredientName);
-      return tempArray1;
+      return this.allIngredients.map(
+        (ingredient) => ingredient.ingredientName
+      );
     },
-    tempArray2() {
-      return this.formData.deliveryItems.map((deliveryItem) => deliveryItem.ingredientName);
+    tempArray() {
+      return this.formData.deliveryItems.map(
+        (deliveryItem) => deliveryItem.ingredientName
+      );
     },
   },
 
@@ -115,24 +147,26 @@ export default {
     ...mapActions(["addDelivery"]),
 
     onSubmit() {
-      console.log("Submitted");
-      console.log(this.formData);
       this.addDelivery(this.formData);
     },
     checkUnique(value) {
-      if (value !== null && this.tempArray2.filter((item) => item == value).length > 1) {
+      if (
+        value !== null &&
+        this.tempArray.filter((item) => item == value).length > 1
+      ) {
         return false;
       } else {
         return true;
       }
     },
     validateUnique() {
-      var tempSet = new Set(this.tempArray2);
-      if (tempSet.size !== this.tempArray2.length) {
+      var tempSet = new Set(this.tempArray);
+      if (tempSet.size !== this.tempArray.length) {
         this.isUnique = false;
       } else {
         this.isUnique = true;
       }
+      console.log(this.isUnique);
     },
 
     addItem() {

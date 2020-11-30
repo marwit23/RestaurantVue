@@ -68,7 +68,6 @@
             <tbody>
                 <tr v-for="ingredient in paginatedData" :key="ingredient.ingredientId">
                     <td>
-                        <b-button @click="linkToEdit(ingredient)" class="btn btn-light btn-sm ml-2">Edit </b-button>
                         <b-button @click="linkToDelete(ingredient)" class="btn btn-light btn-sm ml-2">Delete</b-button>
                     </td>
                     <td>{{ ingredient.ingredientId }}</td>
@@ -105,14 +104,13 @@
         </div>
 
         <b-modal id="modal-1" ok-only okVariant="warning" okTitle="OK">
-            <p class="my-4 font-weight-bold">
-                Unable to perform this action. This ingredient is in use!
+            <h5 class="mb-4">{{ tempIngredient.ingredientName }}</h5>
+            <p class="my-4">
+                Unable to delete. This ingredient is in use!
             </p>
         </b-modal>
 
         <AddIngredientModal />
-
-        <EditIngredientModal :propIngredient="tempIngredient" />
 
         <DeleteIngredientModal :propIngredient="tempIngredient" />
 
@@ -122,7 +120,6 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import AddIngredientModal from "./AddIngredientModal.vue";
-import EditIngredientModal from "./EditIngredientModal.vue";
 import DeleteIngredientModal from "./DeleteIngredientModal.vue";
 
 export default {
@@ -141,7 +138,6 @@ export default {
     },
     components: {
         AddIngredientModal,
-        EditIngredientModal,
         DeleteIngredientModal,
     },
     computed: {
@@ -189,12 +185,6 @@ export default {
             )
                 this.isAvailable = false;
             console.log(this.tempIngredient);
-        },
-        linkToEdit(tempIngredient) {
-            console.log(tempIngredient);
-            this.setTempIngredient(tempIngredient);
-            if (this.isAvailable) this.$bvModal.show("edit-ingredient-modal");
-            else this.$bvModal.show("modal-1");
         },
         linkToDelete(tempIngredient) {
             console.log(tempIngredient);

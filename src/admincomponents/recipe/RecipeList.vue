@@ -55,8 +55,8 @@
                 </div>               
         </b-modal>
 
-        <b-modal id="modal-2" ok-only okTitle="OK" okVariant="success">
-            <p class="my-4 red">Unable to edit. This recipe is in use!</p>
+        <b-modal id="modal-2" ok-only okTitle="OK" okVariant="warning">
+            <p class="my-4 font-weight-bold">Unable to edit. This recipe is in use!</p>
             <p class="my4">All cooking orders that use this dish must be first removed from the list in User Panel.</p>
         </b-modal>
 
