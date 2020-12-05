@@ -12,7 +12,12 @@
         <b-container class="container-md">
             <h5>{{ propRecipe.dishName }}</h5>
             <p class="mb-4">Recipe id: {{ propRecipe.dishId }}</p>
-            <b-table class="smaller-font" striped hover :items="propRecipe.ingredients"></b-table>
+            <b-table
+                class="smaller-font"
+                striped
+                hover
+                :items="propRecipe.ingredients"
+            ></b-table>
         </b-container>
     </b-modal>
 </template>
@@ -26,7 +31,7 @@ export default {
 
     methods: {
         onCancel() {
-            this.$refs["view-recipe-modal"].hide()
+            this.$refs["view-recipe-modal"].hide();
         },
     },
 

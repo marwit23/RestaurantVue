@@ -1,33 +1,32 @@
 <template>
-    <div>
-        <AdminNavigation />
-        <b-container>
-            <router-view />
-        </b-container>
-    </div>
+  <div>
+    <AdminNavigation />
+    <b-container>
+      <router-view />
+    </b-container>
+  </div>
 </template>
 <script>
-import AdminNavigation from './AdminNavigation.vue'
-import { mapActions, mapGetters } from 'vuex'
+import AdminNavigation from "./AdminNavigation.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-    name: 'AdminPanel',
-    components: {
-        AdminNavigation
-    },
+  name: "AdminPanel",
+  components: {
+    AdminNavigation,
+  },
 
-    methods: {
-        ...mapActions(["setUser"]),
-    },
+  methods: {
+    ...mapActions(["setUser"]),
+  },
 
-    computed: {
-        ...mapGetters(["getUser"])
-    },
+  computed: {
+    ...mapGetters(["getUser"]),
+  },
 
-    created(){
-        this.setUser(1)
-    }
-
+  created() {
+    this.setUser(1);
+  },
 };
 </script>
 <style>

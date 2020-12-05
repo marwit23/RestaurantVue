@@ -8,7 +8,7 @@
         class="border-bottom pb-2"
       >
         <b-row class="my-2">
-          <b-col sm="6">
+          <b-col sm="6 pr-custom">
             <ValidationProvider
               name="Dish name"
               rules="required"
@@ -32,7 +32,7 @@
           :key="ingredient.dishIngredientId"
         >
           <b-form-row>
-            <b-col>
+            <b-col sm="4">
               <ValidationProvider
                 name="Ingredient"
                 rules="required"
@@ -54,7 +54,7 @@
               </ValidationProvider>
             </b-col>
 
-            <b-col>
+            <b-col sm="2">
               <ValidationProvider
                 name="Quantity"
                 rules="required|integer|min_value:1"
@@ -100,7 +100,12 @@
 
       <div class="mt-4">
         <b-button variant="secondary" @click="onCancel">Cancel</b-button>
-        <b-button type="submit" variant="warning" :disabled="invalid || !isUnique" class="ml-2" @click="onSubmit"
+        <b-button
+          type="submit"
+          variant="warning"
+          :disabled="invalid || !isUnique"
+          class="ml-2"
+          @click="onSubmit"
           >Submit</b-button
         >
       </div>
@@ -108,36 +113,34 @@
   </b-container>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex"
-import router from '../../router'
-
+import { mapActions, mapGetters } from "vuex";
+import router from "../../router";
 
 export default {
-    name: "EditRecipe",
-    data() {
-        return {
-          isUnique: true,
+  name: "EditRecipe",
+  data() {
+    return {
+      isUnique: true,
+    };
+  },
 
-        }
+  computed: {
+    ...mapGetters(["tempRecipe", "allIngredients"]),
+
+    ingredientOptions() {
+      return this.allIngredients.map((ingredient) => ingredient.ingredientName);
     },
-
-    computed: {
-        ...mapGetters(["tempRecipe", "allIngredients"]),
-
-        ingredientOptions(){
-            return this.allIngredients.map(ingredient => ingredient.ingredientName)
-        },
-        itemsArray() {
+    itemsArray() {
       return this.tempRecipe.ingredients.map(
         (ingredient) => ingredient.ingredientName
       );
     },
-    },
+  },
 
-    methods: {
-        ...mapActions(["editRecipe"]),
+  methods: {
+    ...mapActions(["editRecipe"]),
 
-        checkUnique(value) {
+    checkUnique(value) {
       if (
         value !== null &&
         this.itemsArray.filter((item) => item == value).length > 1
@@ -156,25 +159,37 @@ export default {
       }
       console.log(this.isUnique);
     },
-        onSubmit() {
-            console.log(this.tempRecipe)
-            this.editRecipe(this.tempRecipe)
-        },
-        addItem(){
-          this.tempRecipe.ingredients.push({
-            ingredientName: null,
-            quantityGrams: null
-          })
-        },
-        deleteItem(){
-          this.tempRecipe.ingredients.pop();
-        },
-        onCancel(){
-          router.push({ path : '/admin/recipes' })
-
-        },
-    }
-
-}
+    onSubmit() {
+      console.log(this.tempRecipe);
+      this.editRecipe(this.tempRecipe);
+    },
+    addItem() {
+      this.tempRecipe.ingredients.push({
+        ingredientName: null,
+        quantityGrams: null,
+      });
+    },
+    deleteItem() {
+      this.tempRecipe.ingredients.pop();
+    },
+    onCancel() {
+      router.push({ path: "/admin/recipes" });
+    },
+  },
+};
 </script>
-<style></style>
+<style scoped>
+
+.pr-custom {
+  padding-right:5px;
+}
+  
+
+
+
+
+</style>
+
+
+
+

@@ -8,7 +8,7 @@
         class="border-bottom pb-2"
       >
         <b-row class="my-2">
-          <b-col sm="6">
+          <b-col sm="6 pr-custom">
             <ValidationProvider
               name="Dish name"
               rules="required"
@@ -29,7 +29,6 @@
                 >This item already exists</span
               >
             </ValidationProvider>
-            <!-- required -->
           </b-col>
         </b-row>
 
@@ -38,7 +37,7 @@
           :key="ingredient.dishIngredientId"
         >
           <b-form-row>
-            <b-col>
+            <b-col sm="4">
               <ValidationProvider
                 name="Ingredient"
                 rules="required"
@@ -60,7 +59,7 @@
               </ValidationProvider>
             </b-col>
 
-            <b-col>
+            <b-col sm="2">
               <ValidationProvider
                 name="Quantity"
                 rules="required|integer|min_value:1"
@@ -109,7 +108,9 @@
         <b-button
           type="submit"
           variant="warning"
-          :disabled="invalid || !isUnique || !checkDishNameUnique(formData.dishName)"
+          :disabled="
+            invalid || !isUnique || !checkDishNameUnique(formData.dishName)
+          "
           class="ml-2"
           @click="onSubmit"
           >Submit</b-button
@@ -151,7 +152,9 @@ export default {
       );
     },
     recipeList() {
-      return this.allRecipes.map((recipe) => recipe.dishName).map(recipe => recipe.toUpperCase());
+      return this.allRecipes
+        .map((recipe) => recipe.dishName)
+        .map((recipe) => recipe.toUpperCase());
     },
   },
 
@@ -164,10 +167,10 @@ export default {
           return false;
         } else {
           return true;
-        } 
-      } else {
-          return true;
         }
+      } else {
+        return true;
+      }
     },
 
     checkUnique(value) {
@@ -208,4 +211,16 @@ export default {
   },
 };
 </script>
-<style></style>
+<style scoped>
+.pr-custom {
+  padding-right:5px;
+}
+
+</style>
+
+
+
+
+
+
+

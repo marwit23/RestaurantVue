@@ -132,11 +132,9 @@ export default {
     ...mapGetters(["allDeliveries", "allIngredients"]),
 
     ingredientOptions() {
-      return this.allIngredients.map(
-        (ingredient) => ingredient.ingredientName
-      );
+      return this.allIngredients.map((ingredient) => ingredient.ingredientName);
     },
-    tempArray() {
+    itemsArray() {
       return this.formData.deliveryItems.map(
         (deliveryItem) => deliveryItem.ingredientName
       );
@@ -152,7 +150,7 @@ export default {
     checkUnique(value) {
       if (
         value !== null &&
-        this.tempArray.filter((item) => item == value).length > 1
+        this.itemsArray.filter((item) => item == value).length > 1
       ) {
         return false;
       } else {
@@ -160,8 +158,8 @@ export default {
       }
     },
     validateUnique() {
-      var tempSet = new Set(this.tempArray);
-      if (tempSet.size !== this.tempArray.length) {
+      var tempSet = new Set(this.itemsArray);
+      if (tempSet.size !== this.itemsArray.length) {
         this.isUnique = false;
       } else {
         this.isUnique = true;
